@@ -1,0 +1,41 @@
+.checkoutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  font-family: "Quicksand";
+}
+
+.checkoutBack {
+  float: right;
+}
+
+.orderSummary {
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+  width: 40%;
+  margin: 100px auto;
+  display: block;
+  padding: 10px;
+}
+
+.innerOrderSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orderSummaryItem {
+  margin: 10px;
+}
+
+.pay {
+  width: 300px;
+  padding: 15px;
+  border: none;
+  margin: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+}

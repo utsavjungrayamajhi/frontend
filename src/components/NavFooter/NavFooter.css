@@ -1,0 +1,33 @@
+.footer-center {
+  display: flex;
+  background-color: #fef7eb;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+}
+.footerlogo {
+  mix-blend-mode: multiply;
+  margin-bottom: 10px;
+}
+.I {
+  height: 120px;
+  width: 250px;
+  position: relative;
+  margin-right: -60px;
+}
+.L {
+  height: 80px;
+  width: 80px;
+  margin-top: -30px;
+  margin-left: -60px;
+  position: relative;
+}
+.text p {
+  font-family: "Quicksand";
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: -10px;
+  word-spacing: 0.3rem;
+  padding: 8px;
+}

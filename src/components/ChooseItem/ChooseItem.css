@@ -1,0 +1,59 @@
+.choose-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center horizontally */
+  /* Center vertically */
+  gap: 10px; /* Add space between items */
+  justify-content: flex-start;
+  margin-left: 35px;
+}
+.place-center {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 20px 0;
+}
+.filter-btn {
+  height: 30px;
+  width: 70px;
+  border: none;
+  text-transform: capitalize;
+  background-color: rgb(209, 241, 25);
+  border-radius: 5px;
+}
+.filter-btn:hover {
+  background-color: yellow;
+  transition: 0.3se;
+  cursor: pointer;
+}
+.for-item {
+  height: 40px;
+  width: 15vw;
+  border-radius: 10px;
+  background-color: #f0e8e8;
+  left: -20px;
+  font-family: "oswald";
+  justify-content: center;
+  text-align: center;
+  margin-top: 5px;
+}
+.search-i {
+  margin-top: 15px;
+  border: none;
+}
+.icon {
+  position: relative;
+  top: 12px;
+  font-size: 22px;
+  font-weight: 200;
+  left: -45px;
+}
+
+.menu-section {
+  min-width: 1025px;
+  margin-top: 50px;
+}

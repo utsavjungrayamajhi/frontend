@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.center-home {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}

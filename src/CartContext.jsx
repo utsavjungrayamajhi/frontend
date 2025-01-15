@@ -6,12 +6,12 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (item) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+    setCart((cart) => {
+      const existingItem = cart.find((cartItem) => cartItem.id === item.id);
 
       if (existingItem) {
         // Update quantity if item exists
-        return prevCart.map((cartItem) =>
+        return cart.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: item.quantity } // Update quantity
             : cartItem
@@ -19,19 +19,17 @@ export const CartProvider = ({ children }) => {
       }
 
       // Add new item if quantity > 0
-      return item.quantity > 0 ? [...prevCart, item] : prevCart;
+      return item.quantity > 0 ? [...cart, item] : cart;
     });
   };
 
   const removeFromCart = (id) => {
-    setCart((prevCart) => prevCart.filter((cartItem) => cartItem.id !== id));
+    setCart((cart) => cart.filter((cartItem) => cartItem.id !== id));
   };
 
   const getQuantity = (id) => {
-    return (prevCart) => {
-      const item = prevCart.find((cartItem) => cartItem.id === id);
-      return item ? item.quantity : 0;
-    };
+    const item = cart.find((cartItem) => cartItem.id === id);
+    return item ? item.quantity : 0;
   };
 
   return (

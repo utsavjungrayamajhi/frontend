@@ -1,9 +1,11 @@
 import React from "react";
-
 import "./Combo.css";
-import menu from "./Data";
 import Item from "../Items/Items";
-const Combo = ({ foods, addToCart, removeFromCart }) => {
+import { useCart } from "../../CartContext";
+
+const Combo = ({ foods }) => {
+  const { addToCart, removeFromCart, getQuantity } = useCart(); // Use context for cart actions
+
   return (
     <div className="comboContainer">
       <h1>
@@ -20,19 +22,18 @@ const Combo = ({ foods, addToCart, removeFromCart }) => {
 
       <div className="items combo">
         <div className="combo-item">
-          {foods.map((item, i) => {
-            return (
-              <Item
-                key={i}
-                id={item.id}
-                img={item.img}
-                name={item.name}
-                price={item.price}
-                addToCart={addToCart}
-                removeFromCart={removeFromCart}
-              />
-            );
-          })}
+          {foods.map((item, i) => (
+            <Item
+              key={i}
+              id={item.id}
+              img={item.img}
+              name={item.name}
+              price={item.price}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              getQuantity={getQuantity}
+            />
+          ))}
         </div>
       </div>
     </div>

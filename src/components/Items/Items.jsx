@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Items.css";
+import { useCart } from "../../CartContext";
+
 const Item = (props) => {
   const [count, setCount] = useState(0);
+  useEffect(() => {
+    const initialCount = props.getQuantity(props.id);
+    setCount(initialCount);
+  });
+
   const add = () => {
     setCount(count + 1);
     props.addToCart({ ...props, quantity: count + 1 });
@@ -39,6 +46,7 @@ const Item = (props) => {
             </button>
 
             <div className="count">{count}</div>
+
             <button onClick={add} className="add-btn p">
               +
             </button>

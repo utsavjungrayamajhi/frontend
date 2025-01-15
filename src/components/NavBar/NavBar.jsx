@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./navbar.css";
 
 import { useEffect, useRef, useState } from "react";
-const NavBar = ({ cart }) => {
+const NavBar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
@@ -19,10 +19,6 @@ const NavBar = ({ cart }) => {
       linksContainerRef.current.style.height = "0px";
     }
   }, [showLinks]);
-  const cleanCart = cart.map((item) => {
-    const { addToCart, removeFromCart, ...cleanItem } = item;
-    return cleanItem;
-  });
 
   return (
     <>
@@ -51,23 +47,21 @@ const NavBar = ({ cart }) => {
               </li>
 
               <li>
-                <span
-                  style={{
-                    position: "relative",
-                    top: "2px",
-                    marginRight: "5px",
-                  }}
-                >
-                  <FaSignOutAlt />
-                </span>
-                Login
+                <NavLink to="/login">
+                  <span
+                    style={{
+                      position: "relative",
+                      top: "2px",
+                      marginRight: "5px",
+                    }}
+                  >
+                    <FaSignOutAlt />
+                  </span>
+                  Login
+                </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/cart"
-                  state={{ cart: cleanCart }}
-                  style={{ textDecoration: "none" }}
-                >
+                <NavLink to="/cart" style={{ textDecoration: "none" }}>
                   <span style={{ position: "relative", top: "2px" }}>
                     <FaShoppingCart style={{ marginRight: "5px" }} />
                   </span>

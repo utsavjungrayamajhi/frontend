@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-
 import "./Home.css";
 import Navbar from "../../components/NavBar/NavBar";
 import Combo from "../../components/Combo/Combo";
 import TopPicks from "../../components/TopPicks/TopPicks";
 import ChooseItem from "../../components/ChooseItem/ChooseItem";
 import NavFooter from "../../components/NavFooter/NavFooter";
+import { useCart } from "../../CartContext";
+
 const Home = () => {
   const [foods, setFoods] = useState([]);
-  const [cart, setCart] = useState([]);
+  const { cart, addToCart, removeFromCart, getQuantity } = useCart(); // Use cart context
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,42 +31,19 @@ const Home = () => {
 
     fetchData();
   }, []);
-  const addToCart = (item) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
-
-      if (existingItem) {
-        // Update quantity if item exists
-        return prevCart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: item.quantity } // Update quantity to match the item's state
-            : cartItem
-        );
-      }
-
-      // Add new item if quantity > 0
-      return item.quantity > 0 ? [...prevCart, item] : prevCart;
-    });
-  };
-
-  const removeFromCart = (id) => {
-    setCart((prevCart) => prevCart.filter((cartItem) => cartItem.id !== id));
-  };
 
   return (
     <>
       <div>
-        <Navbar cart={cart} />
+        <Navbar />
       </div>
       <div className="center-home">
-        {/* <div>
-          <TopPicks />
-        </div> */}
         <div>
           <Combo
             foods={foods}
             addToCart={addToCart}
             removeFromCart={removeFromCart}
+            getQuantity={getQuantity}
           />
         </div>
 
@@ -79,4 +57,5 @@ const Home = () => {
     </>
   );
 };
+
 export default Home;

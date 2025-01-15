@@ -1,45 +1,37 @@
 import "./cart.css";
 import { Link } from "react-router-dom";
 
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { getTokenFromCookies, saveTokenInCookies } from "../../cookieUtils";
-import NavBar from "../../components/NavBar/NavBar";
 import NavFooter from "../../components/NavFooter/NavFooter";
+import { useCart } from "../../CartContext";
+import NavBar from "../../components/NavBar/NavBar";
 
 function Cart() {
-  // Get the cart items from the navigation state
-  const location = useLocation();
   const navigate = useNavigate();
-  const cart = location.state?.cart;
-
-  const [cartItems, setCartItems] = useState(location.state?.cart || []); // Default to empty array if not provided
+  const { cart, addToCart, removeFromCart } = useCart();
 
   // Handle increase quantity
-  const handleIncrease = (index) => {
-    const updatedCart = [...cartItems];
-    updatedCart[index].quantity = Number(updatedCart[index].quantity) + 1;
-    setCartItems(updatedCart);
+  const handleIncrease = (item) => {
+    addToCart({ ...item, quantity: item.quantity + 1 });
   };
 
   // Handle decrease quantity
-  const handleDecrease = (index) => {
-    const updatedCart = [...cartItems];
-    if (updatedCart[index].quantity > 1) {
-      updatedCart[index].quantity = Number(updatedCart[index].quantity) - 1;
-      setCartItems(updatedCart);
+  const handleDecrease = (item) => {
+    if (item.quantity > 1) {
+      addToCart({ ...item, quantity: item.quantity - 1 });
     }
   };
 
   // Handle delete item
-  const handleDelete = (index) => {
-    const updatedCart = cartItems.filter((_, i) => i !== index);
-    setCartItems(updatedCart);
+  const handleDelete = (id) => {
+    removeFromCart(id);
   };
 
   // Calculate total price
   const calculateTotalPrice = () => {
-    return cartItems
+    return cart
       .reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2);
   };
@@ -60,8 +52,8 @@ function Cart() {
     await getTokenFromServer();
     const token = getTokenFromCookies();
 
-    console.log(token);
     try {
+      console.log(JSON.stringify(cart));
       const response = await fetch(
         "http://localhost:5000/api/orders/placeOrder",
         {
@@ -70,7 +62,7 @@ function Cart() {
             "Content-Type": "application/json",
             token: `Bearer ${token}`,
           },
-          body: JSON.stringify({ cartItems }),
+          body: JSON.stringify(cart),
         }
       );
 
@@ -87,19 +79,12 @@ function Cart() {
 
   return (
     <div className="cartContainer">
+      <div>
+        <NavBar />
+      </div>
       <div className="cartBody">
-        <div className="cartBodyTitle">
-          <div>
-            <h1>Your Cart</h1>
-          </div>
-          <div>
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              <h1>Go Back</h1>
-            </Link>
-          </div>
-        </div>
         <div>
-          {cartItems.length === 0 ? (
+          {cart.length === 0 ? (
             <p>Your cart is empty.</p>
           ) : (
             <table className="cartTable">
@@ -113,11 +98,11 @@ function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {cartItems.map((item, index) => (
-                  <tr key={index}>
+                {cart.map((item) => (
+                  <tr key={item.id}>
                     <td>
                       <button
-                        onClick={() => handleDelete(index)}
+                        onClick={() => handleDelete(item.id)}
                         className="cartDeleteButton"
                       >
                         Delete
@@ -128,7 +113,7 @@ function Cart() {
                     <td>
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <button
-                          onClick={() => handleDecrease(index)}
+                          onClick={() => handleDecrease(item)}
                           className="quantityButton minus"
                         >
                           -
@@ -137,7 +122,7 @@ function Cart() {
                           {item.quantity}
                         </span>
                         <button
-                          onClick={() => handleIncrease(index)}
+                          onClick={() => handleIncrease(item)}
                           className="quantityButton plus"
                         >
                           +

@@ -1,0 +1,71 @@
+.User {
+  flex: 4;
+  padding: 20px;
+  height: 70vh;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
+  -moz-box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
+  box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
+}
+.addUserTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userFieldForm {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.userFormItem {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.userFormRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.updateUserButton {
+  width: 80px;
+  border: none;
+  padding: 5px;
+  background-color: teal;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.userFormItem > label {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.userFormItemInput {
+  border: none;
+  width: 250px;
+  height: 40px;
+  border-bottom: 1px solid #555;
+}
+
+.userImgUploadContainer {
+  margin: 20px 60px;
+  display: flex;
+  align-items: center;
+}
+
+.userImgUploadContainer > label {
+  cursor: pointer;
+}
+.userImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+}

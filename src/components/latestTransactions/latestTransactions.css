@@ -1,0 +1,32 @@
+.latestTransactions {
+  padding: 30px;
+  margin: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
+  -moz-box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
+  box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
+  font-family: "Oswald", sans-serif;
+  font-weight: 200;
+}
+.latestTransactionsTitle {
+  /* font-size: 20px; */
+  margin-bottom: 10px;
+  font-family: "Quicksand", serif;
+  /* font-weight: 00; */
+}
+
+.latestTable {
+  width: 100%;
+  font-size: 14px;
+}
+
+.latestTableContainer {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.latestTable thead th {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}

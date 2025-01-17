@@ -51,9 +51,8 @@ const Home = () => {
           <ChooseItem />
         </div>
       </div>
-      <div className="footer-center">
-        <NavFooter />
-      </div>
+
+      <NavFooter />
     </>
   );
 };

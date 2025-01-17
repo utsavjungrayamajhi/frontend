@@ -34,25 +34,41 @@ const NavBar = () => {
             <ul
               className="links"
               ref={linksRef}
-              style={{ alignItems: "center", textAlign: "center" }}
+              style={{
+                alignItems: "center",
+                textAlign: "center",
+              }}
             >
               <li>
                 <NavLink
                   to="/"
-                  style={{ textDecoration: "none", color: "black" }}
                   className="navlink"
+                  style={{ textDecoration: "none" }}
                 >
                   Home
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  className="navlink"
+                  style={{ textDecoration: "none" }}
+                >
+                  About
+                </NavLink>
+              </li>
 
               <li>
-                <NavLink to="/login">
+                <NavLink
+                  to="/login"
+                  style={{ textDecoration: "none" }}
+                  className="navlink"
+                >
                   <span
                     style={{
                       position: "relative",
                       top: "2px",
-                      marginRight: "5px",
+                      marginRight: "1px",
                     }}
                   >
                     <FaSignOutAlt />
@@ -61,9 +77,13 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/cart" style={{ textDecoration: "none" }}>
+                <NavLink
+                  to="/cart"
+                  style={{ textDecoration: "none" }}
+                  className="navlink"
+                >
                   <span style={{ position: "relative", top: "2px" }}>
-                    <FaShoppingCart style={{ marginRight: "5px" }} />
+                    <FaShoppingCart style={{ marginRight: "1px" }} />
                   </span>
                   Cart
                 </NavLink>

@@ -1,0 +1,73 @@
+.border-center {
+  border-bottom: 2px solid #f2eee2;
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+.Mission {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.logo3 {
+  opacity: 0.03;
+  border: none;
+  height: 150px;
+  width: 150px;
+  margin: auto;
+}
+.Mission p {
+  font-size: 24px;
+  color: #000000;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: normal;
+  position: relative;
+  bottom: 90px;
+  font-weight: 400;
+  line-height: 40px;
+  width: 100vw;
+  margin: auto;
+}
+.logo4 {
+  display: flex;
+  opacity: 0.09;
+  border: none;
+  height: 180px;
+  width: 180px;
+  margin: auto;
+  position: relative;
+  bottom: 25px;
+}
+.arrow p {
+  font-size: 24px;
+  color: #000000;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: normal;
+  position: relative;
+  bottom: 120px;
+  padding: 5px;
+  font-weight: 400;
+  line-height: 40px;
+  width: 100vw;
+  margin: auto;
+}
+.arrow {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Mission h2,
+.arrow h2 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 60px;
+  color: #e3443e;
+  font-family: "Quicksand", serif;
+}
+.About-mission-image {
+  height: auto;
+  margin-bottom: -20px;
+}

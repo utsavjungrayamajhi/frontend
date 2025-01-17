@@ -4,7 +4,6 @@ import LatestTransactions from "../../components/latestTransactions/LatestTransa
 export default function DashHome() {
   return (
     <div className="dashHome">
-      <FeaturedInfo />
       <LatestTransactions />
     </div>
   );

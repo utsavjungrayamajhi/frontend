@@ -82,18 +82,11 @@ export default function AddUser() {
                   required
                 />
               </div>
-            </div>
-            <div className="userFormRight">
-              <div className="userImgUploadContainer">
-                <img src="/vite.svg" alt="" className="userImg" />
-                <label htmlFor="file">
-                  <UploadFile />
-                </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+              <div className="userFormItem">
+                <button type="submit" className="updateUserButton">
+                  Submit
+                </button>
               </div>
-              <button type="submit" className="updateUserButton">
-                Submit
-              </button>
             </div>
           </form>
         </>

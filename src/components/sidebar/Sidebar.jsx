@@ -80,6 +80,31 @@ export default function Sidebar() {
         </div>
 
         <div className="sidebarMenu">
+          <h3 className="sidebarTitle">Orders</h3>
+          <ul className="sidebarList">
+            <Link
+              to="/dashboard/orders"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <li className="sidebarListItem ">
+                <Fastfood className="sidebarIcon" />
+                Orders
+              </li>
+            </Link>
+
+            {/* <Link
+              to="/dashboard/addFood"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <li className="sidebarListItem">
+                <LibraryAdd className="sidebarIcon" />
+                Add Food
+              </li>
+            </Link> */}
+          </ul>
+        </div>
+
+        <div className="sidebarMenu">
           <h3 className="sidebarTitle">Logout</h3>
           <ul className="sidebarList">
             <Link

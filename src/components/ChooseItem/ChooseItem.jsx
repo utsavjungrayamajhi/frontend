@@ -5,6 +5,7 @@ import I from "../Items-For-choose/I";
 import "./ChooseItem.css";
 import Menu_items from "./Data1";
 import Categories from "./Categories";
+import { Search } from "@mui/icons-material";
 const allCategories = [
   "all",
   ...new Set(Menu_items.map((item) => item.category)),
@@ -39,7 +40,7 @@ function Body() {
           Choose
           <span
             style={{
-              color: "blue",
+              color: "#3398B9",
               fontWeight: "600px",
             }}
           >
@@ -53,7 +54,9 @@ function Body() {
             className="for-item"
             placeholder="Search"
           />
-          <FaSearch className="icon" />
+          <div>
+            <Search className="icon" />
+          </div>
         </div>
       </div>
       <div>

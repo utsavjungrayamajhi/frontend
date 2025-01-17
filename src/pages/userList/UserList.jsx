@@ -80,7 +80,6 @@ export default function UserList() {
         throw new Error("Failed to delete data");
       }
       window.location.reload();
-      alert("Data deleted successfully!");
     } catch (error) {
       console.error("Error deleting data:", error);
       alert("Failed to delete the data");

@@ -12,7 +12,7 @@ const Combo = ({ foods }) => {
         Special
         <span
           style={{
-            color: "blue",
+            color: "#3398B9",
             fontWeight: "600px",
           }}
         >

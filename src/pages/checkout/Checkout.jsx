@@ -112,7 +112,9 @@ function Checkout() {
           {order ? (
             <div className="innerOrderSummary">
               <div className="orderSummaryItem">
-                <h2 style={{ margin: "0", padding: "5px" }}>Order Summary</h2>
+                <h2 style={{ margin: "0", padding: "5px", color: "#e3443e" }}>
+                  Order Summary
+                </h2>
               </div>
               <div className="orderSummaryItem">
                 <ul>

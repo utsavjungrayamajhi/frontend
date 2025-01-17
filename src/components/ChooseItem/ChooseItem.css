@@ -18,15 +18,16 @@
   margin: 20px 0;
 }
 .filter-btn {
-  height: 30px;
-  width: 70px;
+  height: 40px;
+  width: 80px;
   border: none;
   text-transform: capitalize;
-  background-color: rgb(209, 241, 25);
   border-radius: 5px;
+  font-size: 14px;
+  font-family: Oswald, serif;
 }
 .filter-btn:hover {
-  background-color: yellow;
+  border-bottom: 1px solid black;
   transition: 0.3se;
   cursor: pointer;
 }
@@ -34,14 +35,14 @@
   height: 40px;
   width: 15vw;
   border-radius: 10px;
-  background-color: #f0e8e8;
   left: -20px;
-  font-family: "oswald";
+  font-family: "Oswald";
   justify-content: center;
   text-align: center;
   margin-top: 5px;
 }
 .search-i {
+  display: flex;
   margin-top: 15px;
   border: none;
 }

@@ -14,13 +14,15 @@ import DashHome from "./pages/dashHome/DashHome";
 import UserList from "./pages/userList/UserList";
 import FoodList from "./pages/foodList/FoodList";
 import EditUser from "./pages/editUser/EditUser";
-import AddUser from "./pages/addUser/AddUser";
 import AddFood from "./pages/addFood/AddFood";
 import EditFood from "./pages/editFood/EditFood";
+import Orders from "./pages/orders/Orders";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Topbar from "./components/topbar/Topbar";
 import Sidebar from "./components/sidebar/Sidebar";
 import { CartProvider } from "./CartContext";
+import AddUser from "./pages/addUser/addUser";
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -43,6 +45,7 @@ function App() {
           }
         />
         <Route path="/checkout/:id" element={<Checkout />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/dashboard/*"
@@ -60,6 +63,7 @@ function App() {
                     <Route path="/addFood" element={<AddFood />} />
                     <Route path="/editUser" element={<EditUser />} />
                     <Route path="/editFood" element={<EditFood />} />
+                    <Route path="/orders" element={<Orders />} />
                   </Routes>
                 </div>
               </div>

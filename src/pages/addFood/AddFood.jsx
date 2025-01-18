@@ -4,15 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { UploadFile } from "@mui/icons-material";
 import { getTokenFromCookies } from "../../cookieUtils";
 
-export default function AddUser() {
+export default function AddFood() {
   const token = getTokenFromCookies();
   const currentUser = JSON.parse(atob(token.split(".")[1]));
   const [formData, setFormData] = useState({});
+  const [img, setImg] = useState(null);
+  const [imgPreview, setImgPreview] = useState("/finalLogo.png"); // State to hold the image preview
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, files } = e.target;
+    if (name === "img") {
+      setImg(files[0]); // Set the file for the image
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+    if (files[0]) {
+      setImgPreview(URL.createObjectURL(files[0]));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -23,14 +33,20 @@ export default function AddUser() {
         console.log("No token found");
         return;
       }
-      console.log(formData);
-      const response = await fetch(`http://localhost:5000/api/foods/`, {
+
+      // Prepare form data for submission
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("price", formData.price);
+      data.append("category", formData.category);
+      if (img) data.append("img", img); // Append image if present
+
+      const response = await fetch(`http://localhost:5000/api/foods/add`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           token: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: data, // Send FormData as the request body
       });
 
       if (!response.ok) {
@@ -44,61 +60,71 @@ export default function AddUser() {
   };
 
   return (
-    <div className="addUser">
+    <div className="addFood">
       {currentUser.isSuper ? (
         <>
-          <div className="addUserTitleContainer">
-            <h1 className="userTitle"> Add Food Items</h1>
+          <div className="addFoodTitleContainer">
+            <h1 className="foodTitle"> Add Food Items</h1>
           </div>
-          <form action="" className="userFieldForm" onSubmit={handleSubmit}>
-            <div className="userFormLeft">
-              <div className="userFormItem">
+          <form
+            className="foodFieldForm"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+          >
+            <div className="foodFormLeft">
+              <div className="foodFormItem">
                 <label htmlFor="">Name</label>
                 <input
                   type="text"
                   value={formData.name}
-                  className="userFormItemInput"
+                  className="foodFormItemInput"
                   name="name"
                   onChange={handleChange}
                 />
               </div>
-              <div className="userFormItem">
+              <div className="foodFormItem">
                 <label htmlFor="">Price</label>
                 <input
                   type="number"
                   value={formData.price}
-                  className="userFormItemInput"
+                  className="foodFormItemInput"
                   name="price"
                   onChange={handleChange}
                 />
               </div>
-              <div className="userFormItem">
+              <div className="foodFormItem">
                 <label htmlFor="">Category</label>
                 <input
                   type="text"
                   value={formData.category}
-                  className="userFormItemInput"
+                  className="foodFormItemInput"
                   name="category"
                   onChange={handleChange}
                 />
               </div>
             </div>
-            <div className="userFormRight">
-              <div className="userImgUploadContainer">
-                <img src="/vite.svg" alt="" className="userImg" />
-                <label htmlFor="file">
+            <div className="foodFormRight">
+              <div className="foodImgUploadContainer">
+                <img src={imgPreview} alt="" className="foodImg" />
+                <label htmlFor="img">
                   <UploadFile />
                 </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+                <input
+                  type="file"
+                  id="img"
+                  name="img"
+                  onChange={handleChange}
+                  style={{ display: "none" }}
+                />
               </div>
-              <button type="submit" className="updateUserButton">
+              <button type="submit" className="updateFoodButton">
                 Submit
               </button>
             </div>
           </form>
         </>
       ) : (
-        <h3>You cannot access this section ! </h3>
+        <h3>You cannot access this section!</h3>
       )}
     </div>
   );

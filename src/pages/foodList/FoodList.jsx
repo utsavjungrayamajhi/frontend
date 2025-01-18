@@ -55,7 +55,7 @@ export default function FoodList() {
 
   const navigate = useNavigate();
   const handleEdit = (row) => {
-    navigate("/dashboard/editFood", { state: { rowData: row } });
+    navigate("/dashboard/editFood", { state: { rowData: row.id } });
   };
 
   const handleDelete = async (id) => {

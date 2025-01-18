@@ -6,7 +6,7 @@ export default function Topbar() {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <img src="finalLogo.png" alt="MovieSnacks" className="logo" />
+          <img src="/finalLogo.png" alt="MovieSnacks" className="logo" />
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">

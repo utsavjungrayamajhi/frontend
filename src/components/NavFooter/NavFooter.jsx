@@ -4,7 +4,7 @@ import "./NavFooter.css";
 const NavFooter = () => {
   return (
     <div className="footer-center">
-      <img src="finalLogo.png" alt="" className="footerlogo L" />
+      <img src="/finalLogo.png" alt="" className="footerlogo L" />
       <div className="text">
         <p style={{ color: "#E34440" }}>Avoid Queue</p>
         <p style={{ color: "#3398B9" }}>Place Order</p>

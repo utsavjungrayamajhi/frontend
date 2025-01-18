@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import "../Combo/Combo.css";
 import I from "../Items-For-choose/I";
+import Categories from "./Categories";
 import "./ChooseItem.css";
 import Menu_items from "./Data1";
-import Categories from "./Categories";
-import { Search } from "@mui/icons-material";
 const allCategories = [
   "all",
   ...new Set(Menu_items.map((item) => item.category)),
@@ -54,9 +53,7 @@ function Body() {
             className="for-item"
             placeholder="Search"
           />
-          <div>
-            <Search className="icon" />
-          </div>
+          <FaSearch className="icon" />
         </div>
       </div>
       <div>

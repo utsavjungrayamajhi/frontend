@@ -9,7 +9,7 @@ import { useCart } from "../../CartContext";
 
 const Home = () => {
   const [foods, setFoods] = useState([]);
-  const { cart, addToCart, removeFromCart, getQuantity } = useCart(); // Use cart context
+  const { addToCart, removeFromCart, getQuantity } = useCart(); // Use cart context
 
   useEffect(() => {
     const fetchData = async () => {

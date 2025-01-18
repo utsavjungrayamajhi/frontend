@@ -25,7 +25,7 @@ const NavBar = () => {
       <nav>
         <div className="nav-center">
           <div className="nav-header">
-            <img src="finalLogo.png" className="logo" alt="logo" />
+            <img src="/finalLogo.png" className="logo" alt="logo" />
             <button className="nav-toggle" onClick={toggleLinks}>
               <FaBars />
             </button>
@@ -68,7 +68,7 @@ const NavBar = () => {
                     style={{
                       position: "relative",
                       top: "2px",
-                      marginRight: "1px",
+                      marginRight: "2px",
                     }}
                   >
                     <FaSignOutAlt />
@@ -83,7 +83,7 @@ const NavBar = () => {
                   className="navlink"
                 >
                   <span style={{ position: "relative", top: "2px" }}>
-                    <FaShoppingCart style={{ marginRight: "1px" }} />
+                    <FaShoppingCart style={{ marginRight: "2px" }} />
                   </span>
                   Cart
                 </NavLink>

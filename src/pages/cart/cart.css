@@ -1,3 +1,16 @@
+.cartBody p {
+  text-align: center;
+  font-size: 20px;
+  margin: 100px;
+}
+
+.cartBody a {
+  text-decoration: none;
+}
+
+.cartBody a button {
+  cursor: pointer;
+}
 .cartTable {
   width: 65%;
   text-align: left;

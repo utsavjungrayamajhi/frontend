@@ -18,6 +18,14 @@
   justify-content: space-between;
   padding: 30px;
 }
+
+.userFieldForm p {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 5px;
+  color: #e3443e;
+}
 .userFormItem {
   display: flex;
   flex-direction: column;

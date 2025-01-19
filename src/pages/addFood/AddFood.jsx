@@ -73,32 +73,35 @@ export default function AddFood() {
           >
             <div className="foodFormLeft">
               <div className="foodFormItem">
-                <label htmlFor="">Name</label>
+                <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   value={formData.name}
                   className="foodFormItemInput"
                   name="name"
+                  id="name"
                   onChange={handleChange}
                 />
               </div>
               <div className="foodFormItem">
-                <label htmlFor="">Price</label>
+                <label htmlFor="price">Price</label>
                 <input
                   type="number"
                   value={formData.price}
                   className="foodFormItemInput"
                   name="price"
+                  id="price"
                   onChange={handleChange}
                 />
               </div>
               <div className="foodFormItem">
-                <label htmlFor="">Category</label>
+                <label htmlFor="category">Category</label>
                 <input
                   type="text"
                   value={formData.category}
                   className="foodFormItemInput"
                   name="category"
+                  id="category"
                   onChange={handleChange}
                 />
               </div>

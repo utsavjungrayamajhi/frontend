@@ -1,34 +1,56 @@
 import "./editUser.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { UploadFile } from "@mui/icons-material";
 import { getTokenFromCookies } from "../../cookieUtils";
 
 export default function EditUser() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(state.rowData);
-  const [selectedFile, setSelectedFile] = useState(null); // For handling file upload
-  const [imagePreview, setImagePreview] = useState(
-    formData.profileImage || "/vite.svg"
-  ); // Default or existing image path
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSelectedFile(file);
-      setImagePreview(URL.createObjectURL(file)); // Preview image
-    }
-  };
+  useEffect(() => {
+    const validateForm = () => {
+      setErrors({
+        username:
+          formData.username &&
+          /^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?$/.test(formData.username)
+            ? ""
+            : "Username required",
+        email:
+          formData.email &&
+          /^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?@[a-z]+\.\S+$/.test(
+            formData.email
+          )
+            ? ""
+            : "Invalid email",
+        password:
+          formData.password &&
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/-]).{8,}$/.test(
+            formData.password
+          )
+            ? ""
+            : "Weak Password ( include lowercase, uppercase and symbols )",
+      });
+    };
+
+    validateForm(); // Trigger validation whenever formData changes
+  }, [formData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (Object.values(errors).some((error) => error !== "")) {
+      return;
+    }
     try {
       const token = getTokenFromCookies();
 
@@ -37,23 +59,15 @@ export default function EditUser() {
         return;
       }
 
-      // Use FormData for file and text data
-      const formDataToSend = new FormData();
-      formDataToSend.append("username", formData.username);
-      formDataToSend.append("email", formData.email);
-      formDataToSend.append("password", formData.password);
-      if (selectedFile) {
-        formDataToSend.append("profileImage", selectedFile); // Append file
-      }
-
       const response = await fetch(
         `http://localhost:5000/api/users/${formData.ID}`,
         {
           method: "PUT",
           headers: {
+            "Content-Type": "application/json",
             token: `Bearer ${token}`,
           },
-          body: formDataToSend,
+          body: JSON.stringify(formData),
         }
       );
 
@@ -76,39 +90,50 @@ export default function EditUser() {
       <form action="" className="userFieldForm" onSubmit={handleSubmit}>
         <div className="userFormLeft">
           <div className="userFormItem">
-            <label htmlFor="">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               value={formData.username}
               className="userFormItemInput"
               name="username"
+              id="username"
               onChange={handleChange}
             />
+            {errors.username && <p>{errors.username}</p>}
           </div>
           <div className="userFormItem">
-            <label htmlFor="">Email</label>
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
+              type="email"
               value={formData.email}
               className="userFormItemInput"
               name="email"
+              id="email"
               onChange={handleChange}
             />
+            {errors.email && <p>{errors.email}</p>}
           </div>
           <div className="userFormItem">
-            <label htmlFor="">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               value={formData.password}
               name="password"
+              id="password"
               onChange={handleChange}
               className="userFormItemInput"
             />
+            {errors.password && <p>{errors.password}</p>}
           </div>
           <div className="userFormItem">
             <button type="submit" className="updateUserButton">
               Submit
             </button>
+          </div>
+        </div>
+        <div className="userFormRight">
+          <div className="userImgUploadContainer">
+            <img src="/finalLogo.png" alt="" className="userImg" />
           </div>
         </div>
       </form>

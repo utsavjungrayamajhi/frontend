@@ -1,5 +1,5 @@
 import "./cart.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -83,10 +83,15 @@ function Cart() {
         <NavBar />
       </div>
       <div className="cartBody">
-        <div>
-          {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
-          ) : (
+        {cart.length === 0 ? (
+          <>
+            <p>Your cart is empty !</p>
+            <Link to="/">
+              <button className="proceedToCheckout">Go Back</button>
+            </Link>
+          </>
+        ) : (
+          <>
             <table className="cartTable">
               <thead>
                 <tr>
@@ -142,12 +147,11 @@ function Cart() {
                 </tr>
               </tfoot>
             </table>
-          )}
-
-          <button onClick={handleCheckout} className="proceedToCheckout">
-            CHECKOUT
-          </button>
-        </div>
+            <button onClick={handleCheckout} className="proceedToCheckout">
+              CHECKOUT
+            </button>
+          </>
+        )}
       </div>
 
       <NavFooter />

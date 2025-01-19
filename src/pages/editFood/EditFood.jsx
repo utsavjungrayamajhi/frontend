@@ -98,41 +98,45 @@ export default function EditFood() {
       >
         <div className="userFormLeft">
           <div className="userFormItem">
-            <label htmlFor="">Name</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               value={formData.name}
               className="userFormItemInput"
+              id="name"
               name="name"
               onChange={handleChange}
             />
           </div>
           <div className="userFormItem">
-            <label htmlFor="">Price</label>
+            <label htmlFor="price">Price</label>
             <input
               type="number"
               value={formData.price}
               className="userFormItemInput"
               name="price"
+              id="price"
               onChange={handleChange}
             />
           </div>
           <div className="userFormItem">
-            <label htmlFor="">Category</label>
+            <label htmlFor="category">Category</label>
             <input
               type="text"
               value={formData.category}
               className="userFormItemInput"
               name="category"
+              id="category"
               onChange={handleChange}
             />
           </div>
           <div className="userFormItem">
-            <label htmlFor="">Available</label>
+            <label htmlFor="available">Available</label>
             <input
               type="text"
               value={formData.available}
               name="available"
+              id="available"
               onChange={handleChange}
               className="userFormItemInput"
             />

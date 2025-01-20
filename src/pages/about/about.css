@@ -1,72 +1,96 @@
-.border-center {
+.AboutDiv {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 30px;
+}
+.AboutLogo {
+  width: 500px;
+  height: 250px;
+  margin: auto;
+  background-image: url("/finalLogo.png");
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  background-position-x: center;
+  background-position-y: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+.AboutLogo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.98);
+}
+.About p {
+  display: flex;
+  text-align: center;
+  font-size: 18px;
+  color: #000000;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  z-index: 1;
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+.BorderCenter {
   border-bottom: 2px solid #f2eee2;
-  width: 80%;
+  width: 60%;
   display: flex;
-  margin: auto;
-}
-.Mission {
-  display: flex;
-  text-align: center;
   justify-content: center;
-  flex-direction: column;
-}
-.logo3 {
-  opacity: 0.03;
-  border: none;
-  height: 150px;
-  width: 150px;
   margin: auto;
 }
-.Mission p {
-  font-size: 24px;
-  color: #000000;
-  font-family: "Quicksand", sans-serif;
-  letter-spacing: normal;
-  position: relative;
-  bottom: 90px;
-  font-weight: 400;
-  line-height: 40px;
-  width: 100vw;
-  margin: auto;
-}
-.logo4 {
+.MissionLogo {
   display: flex;
-  opacity: 0.09;
-  border: none;
-  height: 180px;
-  width: 180px;
+  width: 500px;
+  height: 250px;
   margin: auto;
+  background-image: url("/mission.png");
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+  background-position-x: center;
+  background-position-y: center;
+  display: flex;
+  align-items: center;
   position: relative;
-  bottom: 25px;
+  justify-content: center;
 }
-.arrow p {
-  font-size: 24px;
-  color: #000000;
-  font-family: "Quicksand", sans-serif;
-  letter-spacing: normal;
+.MissionLogo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.96);
+}
 
-  padding: 5px;
-  font-weight: 400;
-  line-height: 40px;
-  width: 100vw;
-  margin: auto;
-}
-.arrow {
+.MissionLogo p {
   display: flex;
   text-align: center;
-  justify-content: center;
-  flex-direction: column;
+  font-size: 18px;
+  color: #000000;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 30px;
+  z-index: 1;
 }
-.Mission h2,
-.arrow h2 {
-  text-align: center;
-  font-weight: 600;
+.About h2,
+.Mission h2 {
+  font-weight: 550;
   font-size: 30px;
   line-height: 60px;
+  font-family: "Quicksand", sans-serif;
   color: #e3443e;
-  font-family: "Quicksand", serif;
 }
-.About-mission-image {
-  height: auto;
-  margin-bottom: -20px;
+.AboutLogo p svg,
+.MissionLogo p svg {
+  color: #000000;
+  font-size: 1.5rem;
 }

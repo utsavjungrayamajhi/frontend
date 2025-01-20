@@ -1,5 +1,5 @@
 import "./addFood.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UploadFile } from "@mui/icons-material";
 import { getTokenFromCookies } from "../../cookieUtils";
@@ -10,24 +10,43 @@ export default function AddFood() {
   const [formData, setFormData] = useState({});
   const [img, setImg] = useState(null);
   const [imgPreview, setImgPreview] = useState("/finalLogo.png"); // State to hold the image preview
-
+  const [errors, setErrors] = useState({
+    name: "",
+    price: "",
+    category: "",
+  });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "img") {
       setImg(files[0]); // Set the file for the image
+      setImgPreview(URL.createObjectURL(files[0]));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
-    if (files[0]) {
-      setImgPreview(URL.createObjectURL(files[0]));
-    }
   };
+  useEffect(() => {
+    const validateForm = () => {
+      setErrors({
+        name: formData.name ? "" : "Name required",
+        price:
+          formData.price &&
+          /^[0-9]([0-9]*\\.?[0-9])?/.test(formData.price) &&
+          Number(formData.price) !== 0
+            ? ""
+            : "Price required",
+        category: formData.category ? "" : "Category required",
+      });
+    };
+    validateForm();
+  }, [formData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (Object.values(errors).some((error) => error !== "")) {
+      return;
+    }
     try {
       if (!token) {
         console.log("No token found");
@@ -82,6 +101,7 @@ export default function AddFood() {
                   id="name"
                   onChange={handleChange}
                 />
+                {errors.name && <p>{errors.name}</p>}
               </div>
               <div className="foodFormItem">
                 <label htmlFor="price">Price</label>
@@ -93,6 +113,7 @@ export default function AddFood() {
                   id="price"
                   onChange={handleChange}
                 />
+                {errors.price && <p>{errors.price}</p>}
               </div>
               <div className="foodFormItem">
                 <label htmlFor="category">Category</label>
@@ -104,6 +125,7 @@ export default function AddFood() {
                   id="category"
                   onChange={handleChange}
                 />
+                {errors.category && <p>{errors.category}</p>}
               </div>
             </div>
             <div className="foodFormRight">

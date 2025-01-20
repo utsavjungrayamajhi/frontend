@@ -9,11 +9,16 @@ export default function EditFood() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [img, setImg] = useState(null);
-
-  const [imgPreview, setImgPreview] = useState(""); // State to hold the image preview
+  const [imgPreview, setImgPreview] = useState("");
+  const [errors, setErrors] = useState({
+    name: "",
+    price: "",
+    category: "",
+  });
 
   const token = getTokenFromCookies();
   useEffect(() => {
+    // Function to fetch food data
     const fetchFoodData = async () => {
       try {
         const response = await fetch(
@@ -36,21 +41,37 @@ export default function EditFood() {
     fetchFoodData();
   }, [token]);
 
+  useEffect(() => {
+    const validateForm = () => {
+      setErrors({
+        name: formData.name ? "" : "Name required",
+        price:
+          formData.price &&
+          /^[0-9]([0-9]*\\.?[0-9])?/.test(formData.price) &&
+          Number(formData.price) !== 0
+            ? ""
+            : "Price required",
+        category: formData.category ? "" : "Category required",
+      });
+    };
+    validateForm();
+  }, [formData]);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "img") {
       setImg(files[0]);
+      setImgPreview(URL.createObjectURL(files[0]));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-    if (files[0]) {
-      setImgPreview(URL.createObjectURL(files[0]));
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (Object.values(errors).some((error) => error !== "")) {
+      return;
+    }
     try {
       if (!token) {
         console.log("No token found");
@@ -106,18 +127,24 @@ export default function EditFood() {
               id="name"
               name="name"
               onChange={handleChange}
+              required
             />
+            {errors.name && <p>{errors.name}</p>}
           </div>
           <div className="userFormItem">
             <label htmlFor="price">Price</label>
             <input
               type="number"
+              step="0.01"
+              min="0"
               value={formData.price}
               className="userFormItemInput"
               name="price"
               id="price"
               onChange={handleChange}
+              required
             />
+            {errors.price && <p>{errors.price}</p>}
           </div>
           <div className="userFormItem">
             <label htmlFor="category">Category</label>
@@ -128,7 +155,9 @@ export default function EditFood() {
               name="category"
               id="category"
               onChange={handleChange}
+              required
             />
+            {errors.category && <p>{errors.category}</p>}
           </div>
           <div className="userFormItem">
             <label htmlFor="available">Available</label>
@@ -139,6 +168,7 @@ export default function EditFood() {
               id="available"
               onChange={handleChange}
               className="userFormItemInput"
+              required
             />
           </div>
         </div>

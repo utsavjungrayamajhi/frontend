@@ -4,7 +4,7 @@ import Item from "../Items/Items";
 import { useCart } from "../../CartContext";
 
 const Combo = ({ foods }) => {
-  const { addToCart, removeFromCart, getQuantity } = useCart(); // Use context for cart actions
+  const { addToCart, removeFromCart, getQuantity } = useCart();
 
   return (
     <div className="comboContainer">

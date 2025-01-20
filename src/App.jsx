@@ -1,11 +1,6 @@
 import "./App.css";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Checkout from "./pages/checkout/Checkout";
 import Cart from "./pages/cart/Cart";
@@ -35,7 +30,7 @@ function App() {
               <Home />
             </CartProvider>
           }
-        ></Route>
+        />
         <Route
           path="/cart"
           element={

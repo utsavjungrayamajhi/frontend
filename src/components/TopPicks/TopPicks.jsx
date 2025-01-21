@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "./Data";
 import "./TopPicks.css";
-import Item from "../Items/Items";
+import Item from "../item/Item";
 const TopPicks = () => {
   return (
     <>

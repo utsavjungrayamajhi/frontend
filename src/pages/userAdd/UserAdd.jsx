@@ -1,10 +1,10 @@
-import "./addUser.css";
+import "./userAdd.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UploadFile } from "@mui/icons-material";
 import { getTokenFromCookies } from "../../cookieUtils";
 
-export default function AddUser() {
+export default function UserAdd() {
   const token = getTokenFromCookies();
   const currentUser = JSON.parse(atob(token.split(".")[1]));
   const [formData, setFormData] = useState({});
@@ -85,7 +85,7 @@ export default function AddUser() {
           <div className="addUserTitleContainer">
             <h1 className="userTitle"> Add User</h1>
           </div>
-          <form action="" className="userFieldForm" onSubmit={handleSubmit}>
+          <form className="userFieldForm" onSubmit={handleSubmit}>
             <div className="userFormLeft">
               <div className="userFormItem">
                 <label htmlFor="username">Username</label>

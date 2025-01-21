@@ -8,15 +8,15 @@ import Login from "./pages/login/Login";
 import DashHome from "./pages/dashHome/DashHome";
 import UserList from "./pages/userList/UserList";
 import FoodList from "./pages/foodList/FoodList";
-import EditUser from "./pages/editUser/EditUser";
-import AddFood from "./pages/addFood/AddFood";
-import EditFood from "./pages/editFood/EditFood";
+import UserEdit from "./pages/userEdit/UserEdit";
+import FoodAdd from "./pages/foodAdd/FoodAdd";
+import FoodEdit from "./pages/foodEdit/FoodEdit";
 import Orders from "./pages/orders/Orders";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Topbar from "./components/topbar/Topbar";
 import Sidebar from "./components/sidebar/Sidebar";
 import { CartProvider } from "./CartContext";
-import AddUser from "./pages/addUser/addUser";
+import UserAdd from "./pages/userAdd/UserAdd";
 import About from "./pages/about/About";
 
 function App() {
@@ -40,7 +40,14 @@ function App() {
           }
         />
         <Route path="/checkout/:id" element={<Checkout />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/about"
+          element={
+            <CartProvider>
+              <About />
+            </CartProvider>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route
           path="/dashboard/*"
@@ -53,11 +60,11 @@ function App() {
                   <Routes>
                     <Route path="" element={<DashHome />} />
                     <Route path="/users" element={<UserList />} />
+                    <Route path="/addUser" element={<UserAdd />} />
+                    <Route path="/editUser" element={<UserEdit />} />
                     <Route path="/foods" element={<FoodList />} />
-                    <Route path="/addUser" element={<AddUser />} />
-                    <Route path="/addFood" element={<AddFood />} />
-                    <Route path="/editUser" element={<EditUser />} />
-                    <Route path="/editFood" element={<EditFood />} />
+                    <Route path="/addFood" element={<FoodAdd />} />
+                    <Route path="/editFood" element={<FoodEdit />} />
                     <Route path="/orders" element={<Orders />} />
                   </Routes>
                 </div>

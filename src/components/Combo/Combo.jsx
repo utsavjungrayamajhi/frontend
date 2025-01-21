@@ -1,6 +1,6 @@
 import React from "react";
 import "./Combo.css";
-import Item from "../Items/Items";
+import Item from "../item/Item";
 import { useCart } from "../../CartContext";
 
 const Combo = ({ foods }) => {

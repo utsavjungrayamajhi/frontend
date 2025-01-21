@@ -1,10 +1,10 @@
-import "./editFood.css";
+import "./foodEdit.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UploadFile } from "@mui/icons-material";
 import { getTokenFromCookies } from "../../cookieUtils";
 
-export default function EditFood() {
+export default function FoodEdit() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});

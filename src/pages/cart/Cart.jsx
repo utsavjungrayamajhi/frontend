@@ -1,7 +1,7 @@
 import "./cart.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getTokenFromCookies, saveTokenInCookies } from "../../cookieUtils";
 import NavFooter from "../../components/NavFooter/NavFooter";
@@ -10,7 +10,39 @@ import NavBar from "../../components/NavBar/NavBar";
 
 function Cart() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    fullname: "",
+    hall: "",
+    seat: "",
+  });
   const { cart, addToCart, removeFromCart } = useCart();
+  const [errors, setErrors] = useState({
+    fullname: "",
+    hall: "",
+    seat: "",
+  });
+
+  useEffect(() => {
+    const validateForm = () => {
+      setErrors({
+        fullname:
+          formData.fullname &&
+          /^[A-Za-z0-9]([A-Za-z0-9]*)?$/.test(formData.fullname)
+            ? ""
+            : "Fullname required",
+        hall:
+          formData.hall && /^[A-Za-z0-9]([A-Za-z0-9-]*)?$/.test(formData.hall)
+            ? ""
+            : "Hall info required",
+        seat:
+          formData.seat && /^[A-Za-z0-9]([A-Za-z0-9-]*)?$/.test(formData.seat)
+            ? ""
+            : "Seat no. required",
+      });
+    };
+
+    validateForm(); // Trigger validation whenever formData changes
+  }, [formData]);
 
   // Handle increase quantity
   const handleIncrease = (item) => {
@@ -36,6 +68,11 @@ function Cart() {
       .toFixed(2);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const getTokenFromServer = async () => {
     const response = await fetch(
       "http://localhost:5000/api/orders/start-session",
@@ -45,7 +82,6 @@ function Cart() {
     );
     const { token } = await response.json();
     saveTokenInCookies(token);
-    console.log(token);
   };
 
   const handleCheckout = async () => {
@@ -53,7 +89,6 @@ function Cart() {
     const token = getTokenFromCookies();
 
     try {
-      console.log(JSON.stringify(cart));
       const response = await fetch(
         "http://localhost:5000/api/orders/placeOrder",
         {
@@ -114,7 +149,7 @@ function Cart() {
                       </button>
                     </td>
                     <td>{item.name}</td>
-                    <td>Rs{item.price}</td>
+                    <td>Rs. {item.price}</td>
                     <td>
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <button
@@ -134,7 +169,7 @@ function Cart() {
                         </button>
                       </div>
                     </td>
-                    <td>Rs{(item.price * item.quantity).toFixed(2)}</td>
+                    <td>Rs. {(item.price * item.quantity).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -143,17 +178,57 @@ function Cart() {
                   <td colSpan="4" style={{ textAlign: "right" }}>
                     <strong>Total:</strong>
                   </td>
-                  <td>Rs{calculateTotalPrice()}</td>
+                  <td>Rs. {calculateTotalPrice()}</td>
                 </tr>
               </tfoot>
             </table>
+
+            <div>
+              <form>
+                <div className="customerDetailsField">
+                  <div className="detailsItem">
+                    <input
+                      type="text"
+                      name="fullname"
+                      id="fullname"
+                      placeholder="Your name"
+                      onChange={handleChange}
+                      required
+                    />
+                    {errors.fullname && <p>{errors.fullname}</p>}
+                  </div>
+                  <div className="detailsItem">
+                    <input
+                      type="text"
+                      name="hall"
+                      id="hall"
+                      placeholder="Hall"
+                      onChange={handleChange}
+                      required
+                    />
+                    {errors.hall && <p>{errors.hall}</p>}
+                  </div>
+                  <div className="detailsItem">
+                    <input
+                      type="text"
+                      name="seat"
+                      id="seat"
+                      placeholder="Seat"
+                      onChange={handleChange}
+                      required
+                    />
+                    {errors.seat && <p>{errors.seat}</p>}
+                  </div>
+                </div>
+              </form>
+            </div>
+
             <button onClick={handleCheckout} className="proceedToCheckout">
               CHECKOUT
             </button>
           </>
         )}
       </div>
-
       <NavFooter />
     </div>
   );

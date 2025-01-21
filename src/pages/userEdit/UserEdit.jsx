@@ -1,9 +1,9 @@
-import "./editUser.css";
+import "./userEdit.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getTokenFromCookies } from "../../cookieUtils";
 
-export default function EditUser() {
+export default function UserEdit() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(state.rowData);

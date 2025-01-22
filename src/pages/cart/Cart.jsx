@@ -27,7 +27,7 @@ function Cart() {
       setErrors({
         fullname:
           formData.fullname &&
-          /^[A-Za-z0-9]([A-Za-z0-9]*)?$/.test(formData.fullname)
+          /^[A-Za-z0-9]([A-Za-z0-9\s]*)?$/.test(formData.fullname)
             ? ""
             : "Fullname required",
         hall:
@@ -87,7 +87,9 @@ function Cart() {
   const handleCheckout = async () => {
     await getTokenFromServer();
     const token = getTokenFromCookies();
-
+    if (Object.values(errors).some((error) => error !== "")) {
+      return;
+    }
     try {
       const response = await fetch(
         "http://localhost:5000/api/orders/placeOrder",
@@ -97,7 +99,7 @@ function Cart() {
             "Content-Type": "application/json",
             token: `Bearer ${token}`,
           },
-          body: JSON.stringify(cart),
+          body: JSON.stringify({ cart, formData }),
         }
       );
 

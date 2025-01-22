@@ -4,7 +4,7 @@
   position: sticky;
   top: 70px;
   font-family: "Oswald", sans-serif;
-  background-color: #fdfdfd;
+  background-color: #fafafa;
 }
 
 .sidebarWrapper {
@@ -13,11 +13,11 @@
 }
 
 .sidebarMenu {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .sidebarTitle {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .sidebarList {
@@ -31,11 +31,12 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
+  font-size: 18px;
 }
 
 .sidebarListItem.active,
 .sidebarListItem:hover {
-  background-color: #fafafa;
+  background-color: #f5f5f5;
 }
 
 .sidebarIcon {

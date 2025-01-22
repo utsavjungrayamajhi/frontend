@@ -9,19 +9,17 @@
   font-weight: 200;
 }
 .latestTransactionsTitle {
-  /* font-size: 20px; */
   margin-bottom: 10px;
   font-family: "Quicksand", serif;
-  /* font-weight: 00; */
 }
 
 .latestTable {
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .latestTableContainer {
-  height: 350px;
+  height: 60vh;
   overflow-y: scroll;
 }
 

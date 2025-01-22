@@ -107,7 +107,7 @@ export default function FoodEdit() {
   };
 
   return (
-    <div className="Edit">
+    <div className="User">
       <div className="addUserTitleContainer">
         <h1 className="userTitle"> Edit Food</h1>
       </div>

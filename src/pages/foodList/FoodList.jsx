@@ -60,7 +60,6 @@ export default function FoodList() {
 
   const handleDelete = async (id) => {
     try {
-      console.log(id);
       const token = getTokenFromCookies();
 
       if (!token) {
@@ -92,39 +91,41 @@ export default function FoodList() {
           <button className="addUserButton">Add</button>
         </Link>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            {columns.map((col) => (
-              <th key={col.key} className="tableHeading">
-                {col.header}
-              </th>
-            ))}
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {foods.map((row, index) => (
-            <tr key={index}>
+      <div className="listTableContainer">
+        <table className="table">
+          <thead>
+            <tr>
               {columns.map((col) => (
-                <td key={col.key} className="tableData">
-                  {row[col.key]}
-                </td>
+                <th key={col.key} className="tableHeading">
+                  {col.header}
+                </th>
               ))}
-              <td className="action">
-                <button className="edit" onClick={() => handleEdit(row)}>
-                  Edit
-                </button>
-
-                <DeleteOutline
-                  className="delete"
-                  onClick={() => handleDelete(row.id)}
-                />
-              </td>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {foods.map((row, index) => (
+              <tr key={index}>
+                {columns.map((col) => (
+                  <td key={col.key} className="tableData">
+                    {row[col.key]}
+                  </td>
+                ))}
+                <td className="action">
+                  <button className="edit" onClick={() => handleEdit(row)}>
+                    Edit
+                  </button>
+
+                  <DeleteOutline
+                    className="delete"
+                    onClick={() => handleDelete(row.id)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

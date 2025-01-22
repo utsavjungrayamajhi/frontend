@@ -4,34 +4,32 @@ import "../Combo/Combo.css";
 import I from "../Items-For-choose/I";
 import Categories from "./Categories";
 import "./ChooseItem.css";
-import Menu_items from "./Data1";
-const allCategories = [
-  "all",
-  ...new Set(Menu_items.map((item) => item.category)),
-];
+import { quickSort, binarySearch } from "../algorithm";
 
-function Body() {
-  const [menuItems, setMenuItems] = useState(Menu_items);
+function Body({ foods }) {
+  const [menuItems, setMenuItems] = useState(foods);
+  const allCategories = ["all", ...new Set(foods.map((item) => item.category))];
   const [categories, setCategories] = useState(allCategories);
   const filterItems = (category) => {
+    console.log(category);
     if (category === "all") {
-      setMenuItems(Menu_items);
+      setMenuItems(foods);
       return;
     }
-    const newItems = Menu_items.filter((item) => item.category === category);
+    const newItems = foods.filter((item) => item.category === category);
     setMenuItems(newItems);
   };
+
   const handleSearchChange = (e) => {
     const text = e.target.value.toLowerCase();
-    const filterd = Menu_items.filter((item) => {
-      return (
-        item.title.toLowerCase().includes(text) ||
-        item.category.toLowerCase().includes(text)
-      );
-    });
-    setMenuItems(filterd);
-    e.preventDefault();
+
+    const sortedFoods = quickSort([...foods], "name");
+
+    const filtered = binarySearch(sortedFoods, text);
+
+    setMenuItems(filtered);
   };
+
   return (
     <div className="menu-section">
       <div className="place-center">
@@ -39,8 +37,8 @@ function Body() {
           Choose
           <span
             style={{
-              color: "#3398B9",
-              fontWeight: "600px",
+              color: "#3398b9",
+              fontWeight: "600",
             }}
           >
             Your Pick
@@ -57,7 +55,11 @@ function Body() {
         </div>
       </div>
       <div>
-        <Categories categories={categories} filterItems={filterItems} />
+        <Categories
+          foods={foods}
+          categories={categories}
+          filterItems={filterItems}
+        />
       </div>
       <div className="choose">
         <div className="choose-item">
@@ -67,7 +69,7 @@ function Body() {
                 key={i}
                 id={it.id}
                 img={it.img}
-                title={it.title}
+                name={it.name}
                 price={it.price}
               />
             );

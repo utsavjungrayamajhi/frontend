@@ -4,23 +4,24 @@ import { useCart } from "../../CartContext";
 
 const Item = (props) => {
   const [count, setCount] = useState(0);
+  const { addToCart, removeFromCart, getQuantity } = useCart();
   useEffect(() => {
-    const initialCount = props.getQuantity(props.id);
+    const initialCount = getQuantity(props.id);
     setCount(initialCount);
   });
 
   const add = () => {
     setCount(count + 1);
-    props.addToCart({ ...props, quantity: count + 1 });
+    addToCart({ ...props, quantity: count + 1 });
   };
 
   const deduct = () => {
     if (count > 0) {
-      props.addToCart({ ...props, quantity: count - 1 });
+      addToCart({ ...props, quantity: count - 1 });
       setCount(count - 1);
     }
     if (count === 1) {
-      props.removeFromCart(props.id);
+      removeFromCart(props.id);
       setCount(count - 1);
     }
   };

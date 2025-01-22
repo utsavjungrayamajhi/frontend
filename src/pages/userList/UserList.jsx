@@ -96,39 +96,41 @@ export default function UserList() {
               <button className="addUserButton">Create</button>
             </Link>
           </div>
-          <table className="table">
-            <thead>
-              <tr>
-                {columns.map((col) => (
-                  <th key={col.key} className="tableHeading">
-                    {col.header}
-                  </th>
-                ))}
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((row, index) => (
-                <tr key={index}>
+          <div className="listTableContainer">
+            <table className="table">
+              <thead>
+                <tr>
                   {columns.map((col) => (
-                    <td key={col.key} className="tableData">
-                      {row[col.key]}
-                    </td>
+                    <th key={col.key} className="tableHeading">
+                      {col.header}
+                    </th>
                   ))}
-                  <td className="action">
-                    <button className="edit" onClick={() => handleEdit(row)}>
-                      Edit
-                    </button>
-
-                    <DeleteOutline
-                      className="delete"
-                      onClick={() => handleDelete(row.ID)}
-                    />
-                  </td>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {users.map((row, index) => (
+                  <tr key={index}>
+                    {columns.map((col) => (
+                      <td key={col.key} className="tableData">
+                        {row[col.key]}
+                      </td>
+                    ))}
+                    <td className="action">
+                      <button className="edit" onClick={() => handleEdit(row)}>
+                        Edit
+                      </button>
+
+                      <DeleteOutline
+                        className="delete"
+                        onClick={() => handleDelete(row.ID)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       ) : (
         <h3>You cannot access this section !</h3>

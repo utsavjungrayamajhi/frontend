@@ -54,9 +54,6 @@ export default function LatestTransactions() {
   return (
     <div className="latestTransactions">
       <h3 className="latestTransactionsTitle">Latest Transactions</h3>
-      {/* <Link to="/dashboard/addUser">
-        <button className="addUserButton">Create</button>
-      </Link> */}
 
       <div className="latestTableContainer">
         <table className="latestTable">

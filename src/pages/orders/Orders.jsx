@@ -31,12 +31,16 @@ export default function Orders() {
 
         const filteredData = data.map((ord) => ({
           ID: ord.id,
+          name: ord.customerName,
+          hall: ord.hall,
+          seat: ord.seat,
           // Format the foodItems into a string
           foodItem: JSON.parse(ord.foodItems)
             .map((item) => `${item.name} (Qty: ${item.quantity})`)
             .join(", "), // Join the array of strings into a single string
           totalPrice: ord.totalPrice,
           status: ord.status,
+          delivered: ord.delivered === "delivered",
         }));
 
         setTxn(filteredData);
@@ -48,11 +52,46 @@ export default function Orders() {
     fetchData();
   }, []);
 
+  const handleDeliveryChange = async (id, delivered) => {
+    try {
+      const token = getTokenFromCookies();
+      if (!token) {
+        console.log("No token found");
+        return;
+      }
+
+      const response = await fetch(`http://localhost:5000/api/orders/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          token: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          delivered: delivered ? "delivered" : "pending",
+        }),
+      });
+
+      setTxn((prevTxn) =>
+        prevTxn.map((order) =>
+          order.ID === id ? { ...order, delivered } : order
+        )
+      );
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const columns = [
     { header: "ID", key: "ID" },
+    { header: "Name", key: "name" },
+    { header: "Hall", key: "hall" },
+    { header: "Seat", key: "seat" },
     { header: "Food Items", key: "foodItem" },
     { header: "Amount", key: "totalPrice" },
-    { header: "Status", key: "status" },
+    { header: "Payment", key: "status" },
   ];
 
   return (
@@ -68,6 +107,7 @@ export default function Orders() {
                   {col.header}
                 </th>
               ))}
+              <th>Delivered</th>
             </tr>
           </thead>
 
@@ -79,6 +119,15 @@ export default function Orders() {
                     {row[col.key]}
                   </td>
                 ))}
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={row.delivered}
+                    onChange={(e) => {
+                      handleDeliveryChange(row.ID, e.target.checked);
+                    }}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>

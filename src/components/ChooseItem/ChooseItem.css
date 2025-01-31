@@ -1,12 +1,12 @@
 .choose {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .choose-item {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .place-center {
@@ -41,6 +41,7 @@
 .menu-section {
   margin-top: 50px;
   margin-bottom: 50px;
+  padding-top: 50px;
 }
 @media screen and (max-width: 800px) {
   .icon {

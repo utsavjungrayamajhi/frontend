@@ -5,7 +5,7 @@ const Categories = ({ categories, filterItems, foods }) => {
   // Dynamically get the image of the first item in each category
   const getCategoryImage = (category) => {
     if (category === "all") {
-      return foods[2].img; // Default to the first food item if available
+      return foods[9].img; // Default to the first food item if available
     }
     const firstItem = foods.find((item) => item.category === category);
     return firstItem ? firstItem.img : ""; // Return the image of the first item in the category

@@ -34,7 +34,7 @@ export default function FoodList() {
           name: food.name,
           price: food.price,
           category: food.category,
-          available: food.available ? "Yes" : "No",
+          available: food.available === "yes" ? "Yes" : "No",
         }));
 
         setFoods(filteredData);

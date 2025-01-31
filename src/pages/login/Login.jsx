@@ -26,8 +26,8 @@ export default function Login() {
       });
 
       if (!response.ok) {
-        console.log(response.json());
-        throw new Error("Invalid username or password");
+        const errorMsg = await response.json();
+        throw new Error(errorMsg);
       }
 
       const { accessToken } = await response.json();

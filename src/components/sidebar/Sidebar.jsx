@@ -15,7 +15,10 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Dashboard</h3>
+          <div className="sidebarTitleWrapper">
+            <h3 className="sidebarTitle">Dashboard</h3>
+            <div className="line"></div>
+          </div>
           <ul className="sidebarList">
             <Link
               to="/dashboard"
@@ -30,7 +33,10 @@ export default function Sidebar() {
         </div>
 
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">User</h3>
+          <div className="sidebarTitleWrapper">
+            <h3 className="sidebarTitle">Users</h3>
+            <div className="line"></div>
+          </div>
           <ul className="sidebarList">
             <Link
               to="/dashboard/users"
@@ -55,7 +61,10 @@ export default function Sidebar() {
         </div>
 
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Food</h3>
+          <div className="sidebarTitleWrapper">
+            <h3 className="sidebarTitle">Food</h3>
+            <div className="line"></div>
+          </div>
           <ul className="sidebarList">
             <Link
               to="/dashboard/foods"
@@ -80,7 +89,10 @@ export default function Sidebar() {
         </div>
 
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Orders</h3>
+          <div className="sidebarTitleWrapper">
+            <h3 className="sidebarTitle">Order</h3>
+            <div className="line"></div>
+          </div>
           <ul className="sidebarList">
             <Link
               to="/dashboard/orders"
@@ -103,9 +115,11 @@ export default function Sidebar() {
             </Link> */}
           </ul>
         </div>
-
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Logout</h3>
+          <div className="sidebarTitleWrapper">
+            <h3 className="sidebarTitle">Logout</h3>
+            <div className="line"></div>
+          </div>
           <ul className="sidebarList">
             <Link
               to="/login"

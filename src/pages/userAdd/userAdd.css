@@ -12,6 +12,11 @@
   justify-content: space-between;
 }
 
+.userTitle {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
 .userFieldForm {
   display: flex;
   justify-content: space-between;

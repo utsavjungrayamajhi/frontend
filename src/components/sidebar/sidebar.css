@@ -8,18 +8,30 @@
 }
 
 .sidebarWrapper {
-  padding: 20px;
+  padding: 20px 10px;
   color: #555;
 }
 
 .sidebarMenu {
-  margin-bottom: 15px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .sidebarTitle {
   font-size: 16px;
+  font-weight: 500;
+}
+.sidebarTitleWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
+.line {
+  width: 90%;
+  border-top: 1px solid rgba(85, 85, 85, 0.223);
+}
 .sidebarList {
   list-style: none;
   padding: 5px;
@@ -27,11 +39,11 @@
 
 .sidebarListItem {
   cursor: pointer;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   align-items: center;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .sidebarListItem.active,

@@ -71,16 +71,17 @@ export default function Orders() {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
       setTxn((prevTxn) =>
         prevTxn.map((order) =>
           order.ID === id ? { ...order, delivered } : order
         )
       );
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
     } catch (error) {
       console.log(error);
+      alert(error);
     }
   };
 

@@ -32,6 +32,7 @@ export default function Login() {
 
       const { accessToken } = await response.json();
       saveTokenInCookies(accessToken);
+      console.log(accessToken);
       navigate("/dashboard");
     } catch (error) {
       setErrorMessage(error.message);

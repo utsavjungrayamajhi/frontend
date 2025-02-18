@@ -9,18 +9,31 @@
   font-weight: 200;
 }
 .latestTransactionsTitle {
-  margin-bottom: 10px;
-  font-family: "Quicksand", serif;
+  margin-bottom: 15px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #e3443e;
+  text-transform: uppercase;
 }
 
 .latestTable {
   width: 100%;
   font-size: 16px;
+  border-collapse: collapse;
+}
+
+.latestTable tr {
+  border-bottom: 1px solid rgba(85, 85, 85, 0.223);
+}
+
+.latestTable tr:hover {
+  background-color: #fafafa;
 }
 
 .latestTableContainer {
   height: 60vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .latestTable thead th {

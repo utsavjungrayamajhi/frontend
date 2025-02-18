@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { binarySearch, quickSort } from "../algorithm";
 import "../Combo/Combo.css";
 import I from "../Items-For-choose/I";
 import Categories from "./Categories";
 import "./ChooseItem.css";
-import { quickSort, binarySearch } from "../algorithm";
 
 function Body({ foods }) {
   const [menuItems, setMenuItems] = useState(foods);

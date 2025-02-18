@@ -1,6 +1,6 @@
 import React from "react";
-import "./Combo.css";
 import Item from "../item/Item";
+import "./Combo.css";
 
 const Combo = ({ foods }) => {
   return (

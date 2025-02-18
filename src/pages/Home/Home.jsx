@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import "./Home.css";
-import Navbar from "../../components/NavBar/NavBar";
-import Combo from "../../components/Combo/Combo";
-import ChooseItem from "../../components/ChooseItem/ChooseItem";
-import NavFooter from "../../components/NavFooter/NavFooter";
 import jsPDF from "jspdf";
+import React, { useEffect, useState } from "react";
+import ChooseItem from "../../components/ChooseItem/ChooseItem";
+import Combo from "../../components/Combo/Combo";
+import Navbar from "../../components/NavBar/NavBar";
+import NavFooter from "../../components/NavFooter/NavFooter";
+import "./Home.css";
 
 const Home = () => {
   const [foods, setFoods] = useState([]);
@@ -31,7 +31,6 @@ const Home = () => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -85,7 +84,6 @@ const Home = () => {
           );
           yPosition += 10;
         });
-
         // Add total price
         doc.text(`Total: Rs. ${orderData.totalPrice}`, 20, yPosition + 10);
 
@@ -106,7 +104,6 @@ const Home = () => {
         console.error("Error generating receipt:", error);
       }
     };
-
     generateReceipt();
   }, [orderData]);
 
@@ -131,7 +128,6 @@ const Home = () => {
           </>
         )}
       </div>
-
       <NavFooter />
     </>
   );

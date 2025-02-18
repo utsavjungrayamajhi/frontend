@@ -92,7 +92,7 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-      <hr />
+      <div className="navline"></div>
     </>
   );
 };

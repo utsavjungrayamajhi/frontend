@@ -1,6 +1,9 @@
+.Aboutpage {
+  background: linear-gradient(#3a2acf, rgb(25, 245, 216));
+}
 .AboutDiv {
   display: flex;
-  margin-top: 20px;
+
   flex-direction: column;
   gap: 30px;
 }

@@ -1,11 +1,12 @@
 .choose {
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
 }
 .choose-item {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 2.5rem;
   justify-content: flex-start;
 }
 
@@ -26,6 +27,11 @@
   margin-top: 5px;
   border-radius: 5px;
 }
+.slick-next:before,
+.slick-prev:before {
+  color: #f5b031 !important;
+}
+
 .search-i {
   margin-top: 15px;
   border: none;
@@ -56,7 +62,6 @@
 }
 
 .ButtonItems {
-  display: flex;
   margin: 60px auto;
   justify-content: center;
   border-radius: 15px;
@@ -69,11 +74,9 @@
   width: 80px;
   display: flex;
   justify-content: center;
-  flex-direction: row;
   cursor: pointer;
   border-radius: 50%;
   align-items: center;
-  background-color: #fafafa;
 }
 .category-img {
   width: 80px;
@@ -88,45 +91,8 @@
   transform: rotate(10deg);
 }
 .ImageButtonContainer {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-@media screen and (max-width: 1000px) {
-  .ButtonItems {
-    gap: 20px;
-  }
-}
-@media screen and (max-width: 800px) {
-  .ButtonItems {
-    gap: 20px;
-  }
-  .ImageButton {
-    height: 70px;
-    width: 70px;
-  }
-  .category-img {
-    width: 70px;
-    height: 70px;
-  }
-}
-@media screen and (max-width: 799px) {
-  .ButtonItems {
-    gap: 5px;
-  }
-  .ImageButton {
-    height: 60px;
-    width: 60px;
-  }
-  .category-img {
-    width: 60px;
-    height: 60px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .ButtonItems {
-    gap: 5px;
-  }
 }

@@ -98,3 +98,40 @@
   background-color: #2b809c;
   transition: 0.3s;
 }
+
+@media screen and (max-width: 768px) {
+  .centerContainer {
+    padding: 15px;
+  }
+
+  .loginField {
+    border: none;
+    width: 250px;
+    height: 40px;
+    padding: 5px;
+  }
+
+  .log-btn {
+    font-size: 16px;
+    border: none;
+    color: white;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    font-family: inherit;
+  }
+  .login-img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .backToHome {
+    font-size: 14px;
+  }
+
+  .login-title {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 5px;
+  }
+}

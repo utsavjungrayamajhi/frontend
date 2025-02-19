@@ -5,14 +5,14 @@
   -webkit-box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
   -moz-box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
   box-shadow: 2px 0px 5px 2px rgba(85, 85, 85, 0.223);
-  font-family: "Oswald", sans-serif;
-  font-weight: 200;
+  font-family: "Quicksand", serif;
+  font-weight: 400;
 }
 .latestTransactionsTitle {
   margin-bottom: 15px;
   font-family: "Oswald", sans-serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 20px;
   color: #e3443e;
   text-transform: uppercase;
 }
@@ -38,6 +38,6 @@
 
 .latestTable thead th {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   text-align: left;
 }

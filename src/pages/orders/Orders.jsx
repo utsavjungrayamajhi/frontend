@@ -97,7 +97,7 @@ export default function Orders() {
 
   return (
     <div className="latestTransactions">
-      <h1 className="latestTransactionsTitle">Order list</h1>
+      <h3 className="latestTransactionsTitle">Order list</h3>
 
       <div className="latestTableContainer">
         <table className="latestTable">
@@ -120,8 +120,9 @@ export default function Orders() {
                     {row[col.key]}
                   </td>
                 ))}
-                <td>
+                <td className="deliveredField">
                   <input
+                    className="delivered"
                     type="checkbox"
                     checked={row.delivered}
                     onChange={(e) => {

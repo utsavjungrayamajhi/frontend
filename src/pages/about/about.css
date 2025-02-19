@@ -94,3 +94,37 @@
   color: #000000;
   font-size: 1.5rem;
 }
+
+@media screen and (max-width: 768px) {
+  .About p {
+    font-size: 14px;
+    font-family: "Quicksand", sans-serif;
+
+    letter-spacing: 1px;
+    line-height: 30px;
+  }
+  .MissionLogo p {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 30px;
+    z-index: 1;
+  }
+  .About h2,
+  .Mission h2 {
+    font-size: 24px;
+    line-height: 60px;
+  }
+
+  .AboutLogo p svg,
+  .MissionLogo p svg {
+    font-size: 1rem;
+  }
+
+  .AboutLogo {
+    max-width: fit-content;
+  }
+  .MissionLogo {
+    max-width: fit-content;
+  }
+}

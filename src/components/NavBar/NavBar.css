@@ -1,7 +1,7 @@
 .links-container > ul > li {
   list-style: none;
   text-decoration: none;
-  padding: 2.2rem;
+  padding: 1.2rem;
 }
 ul .navlink {
   font-family: "Oswald", serif;
@@ -37,6 +37,7 @@ ul .navlink {
   }
   .links-container {
     height: 80px !important;
+    padding-top: 25px;
   }
   .links {
     display: flex;
@@ -86,4 +87,8 @@ hr {
   border-bottom: 3px solid #f5b031;
   border-width: 2px;
   transition: 1s ease-out;
+}
+.navline {
+  border-bottom: 2px solid #d7d3d3;
+  box-shadow: 5px 2px 1px rgb(234, 240, 245);
 }

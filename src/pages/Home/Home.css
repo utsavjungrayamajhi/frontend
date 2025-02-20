@@ -3,9 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .center-home {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 70%;
   margin: auto;
 }

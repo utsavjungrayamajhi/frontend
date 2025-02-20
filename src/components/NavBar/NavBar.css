@@ -1,10 +1,14 @@
 .links-container > ul > li {
   list-style: none;
   text-decoration: none;
-  padding: 1.2rem;
+  padding: 1rem;
+  margin-right: 2rem;
 }
 ul .navlink {
   font-family: "Oswald", serif;
+  font-size: 16px;
+  font-weight: 350;
+  letter-spacing: 1px;
   color: #000000;
 }
 .nav-toggle {
@@ -18,6 +22,11 @@ ul .navlink {
 .nav-toggle:hover {
   transform: rotate(90deg);
 }
+.mainLogo {
+  height: 65px;
+  width: 65px;
+}
+
 @media screen and (min-width: 800px) {
   .nav-center {
     max-width: 75%;
@@ -25,7 +34,6 @@ ul .navlink {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
     height: 80px;
   }
 
@@ -85,10 +93,9 @@ hr {
 }
 .active {
   border-bottom: 3px solid #f5b031;
-  border-width: 2px;
+  border-width: 3px;
   transition: 1s ease-out;
 }
-.navline {
-  border-bottom: 2px solid #d7d3d3;
-  box-shadow: 5px 2px 1px rgb(234, 240, 245);
+nav {
+  box-shadow: 0px 2px 4px #d4d2d2;
 }

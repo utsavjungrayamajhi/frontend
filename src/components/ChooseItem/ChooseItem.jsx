@@ -34,11 +34,10 @@ function Body({ foods }) {
     <div className="menu-section">
       <div className="place-center">
         <h1>
-          Choose
+          Choose &nbsp;
           <span
             style={{
               color: "#3398b9",
-              fontWeight: "600",
             }}
           >
             Your Pick

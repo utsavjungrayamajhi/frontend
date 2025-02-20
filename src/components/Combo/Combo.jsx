@@ -6,11 +6,10 @@ const Combo = ({ foods }) => {
   return (
     <div className="comboContainer">
       <h1>
-        Special
+        Special &nbsp;
         <span
           style={{
             color: "#3398b9",
-            fontWeight: "600px",
           }}
         >
           Offers

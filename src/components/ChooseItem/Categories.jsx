@@ -78,6 +78,7 @@ const Categories = ({ categories, filterItems, foods }) => {
                   textTransform: "uppercase",
                   fontFamily: "Quicksand",
                   fontSize: "14px",
+                  fontWeight: 500,
                 }}
               >
                 {category}

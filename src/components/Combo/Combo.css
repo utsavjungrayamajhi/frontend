@@ -1,28 +1,29 @@
 .comboContainer {
-  margin-top: 50px;
+  margin-top: 3rem;
 }
 .combo {
   display: flex;
   align-items: center;
-  gap: 10px;
   margin-top: 50px;
 }
 
 .combo-item {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1rem;
 }
 h1 {
-  font-family: "Oswald", serif;
+  font-family: "Quicksand", serif;
   text-transform: uppercase;
   letter-spacing: normal;
-  padding-top: 10px;
   display: flex;
-  font-size: 26px;
+  font-size: 24px;
   margin: 20px;
   justify-content: flex-start;
+  font-weight: 650;
+  color: #e3443e;
 }
+
 .combo-class {
   display: flex;
   margin: 30px;
